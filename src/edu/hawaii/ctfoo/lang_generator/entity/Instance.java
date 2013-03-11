@@ -26,21 +26,16 @@ public class Instance extends Entity {
     private String difficulty;
 
     /**
-     * Creates a new Instance with default values.
-     */
-    public Instance() {
-        super();
-        this.name = "";
-        this.mode = "";
-        this.difficulty = "";
-    }
-
-    /**
      * Creates a new Instance based on the given {@link Tree}.
      * @param instanceToken The Tree of an Instance token node.
      */
     public Instance(Tree<ParseToken> instanceToken) {
-        this();
+        // Set default values
+        this.name = "";
+        this.mode = "";
+        this.difficulty = "";
+        
+        // Get the values from the parsed representation
         if(instanceToken.getNode().getType().equalsIgnoreCase("instance")) {
            if(instanceToken.getNode().isNegated()) {
                 this.negated = true;
@@ -55,8 +50,7 @@ public class Instance extends Entity {
                
                type = instanceAttribute.getNode().getType();
                
-               value = (instanceAttribute.getNode().getValue() == null) ? null
-                       : instanceAttribute.getNode().getValue();
+               value = instanceAttribute.getNode().getValue();
                
                // Set name
                if(type.equalsIgnoreCase("name")) {

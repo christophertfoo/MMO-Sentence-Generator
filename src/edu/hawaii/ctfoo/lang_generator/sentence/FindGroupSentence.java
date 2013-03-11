@@ -26,13 +26,6 @@ public class FindGroupSentence extends Sentence {
     private static final Class<?>[] validSubjectClasses = { Player.class };
 
     /**
-     * Creates a new FindGroupSentence with the default values (empty);
-     */
-    public FindGroupSentence() {
-        super(validObjectClasses, validSubjectClasses);
-    }
-
-    /**
      * Creates a new FindGroupSentence and fills it with values based on the
      * given FindGroup {@link Tree} node.
      * 
@@ -41,7 +34,7 @@ public class FindGroupSentence extends Sentence {
      *            FindGroupSentence.
      */
     public FindGroupSentence(Tree<ParseToken> findGroupToken) {
-        this();
+      super(validObjectClasses, validSubjectClasses);
 
         if (findGroupToken.getNode().getType().equalsIgnoreCase("findgroup")) {
             this.readSubObj(findGroupToken, "object");
